@@ -23,7 +23,9 @@ gulp.task('watchify', function() {
 			.pipe(gulp.dest('./build'))
 			.on('end', function() {
 				bundleLogger.end(outputName);
-				browserSync.reload();
+				setTimeout(function() {
+					browserSync.reload();
+				}, 200);
 			});
 	}
 	watcher

@@ -36,3 +36,13 @@ QUnit.test('#remove', function() {
 	h.arr.remove(a, '3');
 	ok(a.indexOf('3') == -1 && a.length === 0);
 });
+
+QUnit.module('Regexp');
+QUnit.test('#execArray', function() {
+	var str = 'I am superman. And i am superman';
+	var ar = h.reg.execArray(str, /(superman)/g);
+	h.g.l(ar);
+	ok(ar.length == 2);
+	ok(ar[1] == 'superman');
+	ok(ar[0] == 'superman');
+});

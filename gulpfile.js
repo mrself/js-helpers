@@ -41,7 +41,9 @@ gulp.task('browser-sync', function() {
 	browserSync.init({
 		server: {
 			baseDir: './build'
-		}
+		},
+		index: 'index.html',
+		files: ['./build/*.html', './build/test.js']
 	});
 });
 

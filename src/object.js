@@ -1,5 +1,5 @@
 module.exports = {
 	is: function (possibleObj) {
-		return (!!a) && (a.constructor === Object);
+		return (!!possibleObj) && (possibleObj.constructor === Object);
 	}
 };

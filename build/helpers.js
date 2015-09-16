@@ -34,10 +34,11 @@ h.obj = require('./object');
 h.arr = require('./array');
 h.s = require('./string');
 h.reg = require('./reg');
+window.h = h;
 },{"./array":1,"./general":2,"./object":4,"./reg":5,"./string":6}],4:[function(require,module,exports){
 module.exports = {
 	is: function (possibleObj) {
-		return (!!a) && (a.constructor === Object);
+		return (!!possibleObj) && (possibleObj.constructor === Object);
 	}
 };
 },{}],5:[function(require,module,exports){

@@ -4,12 +4,10 @@ var gulp = require('gulp'),
 	bundleLogger = require('./gulp/bundleLogger'),
 	source = require('vinyl-source-stream'),
 	browserSync = require('browser-sync'),
-	requireDir = require('require-dir');
+	requireDir = require('require-dir'),
+	unil = require('gulp-util');
 
 var src = './src/', outputName = 'helpers.js';
-
-// Require all tasks in gulp/tasks, including subfolders
-// requireDir('./gulp', { recurse: true });
 
 gulp.task('watchify', function() {
 	var bundler = browserify({

@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 	watchify = require('watchify'),
 	bundleLogger = require('./gulp/bundleLogger'),
 	source = require('vinyl-source-stream'),
-	browserSync = require('browser-sync'),
+	browserSync = require('browser-sync').create(),
 	requireDir = require('require-dir'),
 	unil = require('gulp-util');
 
@@ -23,6 +23,7 @@ gulp.task('watchify', function() {
 			.pipe(gulp.dest('./build'))
 			.on('end', function() {
 				bundleLogger.end(outputName);
+				browserSync.reload();
 			});
 	}
 	watcher
@@ -34,3 +35,14 @@ gulp.task('watchify', function() {
 	bundleLogger.watch(outputName);
 	return bundle();
 });
+
+
+gulp.task('browser-sync', function() {
+	browserSync.init({
+		server: {
+			baseDir: './build'
+		}
+	});
+});
+
+gulp.task('default', ['watchify', 'browser-sync']);

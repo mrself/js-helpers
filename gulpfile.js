@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 	requireDir = require('require-dir'),
 	unil = require('gulp-util');
 
-var src = './src/', outputName = 'helpers.js';
+var src = './src/', outputName = 'app.js';
 
 gulp.task('watchify', function() {
 	var bundler = browserify({

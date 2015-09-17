@@ -1,4 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/**
+ * Usage example
+ * require('./helpers') return helpers obj
+ */
+
+window.h = require('./helpers');
+},{"./helpers":4}],2:[function(require,module,exports){
 module.exports = {
 	is: function (possibleArr) {
 		return (!!possibleArr) && (possibleArr.constructor === Array);
@@ -9,7 +16,7 @@ module.exports = {
 		return array;
 	}
 };
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = {
 	makeClass: function (Class, Prototype) {
 		Class.prototype = new Prototype();
@@ -26,16 +33,15 @@ module.exports = {
 		return new F();
 	}
 };
-},{}],3:[function(require,module,exports){
-var h = {};
-
-h.g = require('./general');
-h.obj = require('./object');
-h.arr = require('./array');
-h.s = require('./string');
-h.reg = require('./reg');
-window.h = h;
-},{"./array":1,"./general":2,"./object":4,"./reg":5,"./string":6}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+var helpers = {};
+helpers.g = require('./general');
+helpers.obj = require('./object');
+helpers.arr = require('./array');
+helpers.s = require('./string');
+helpers.reg = require('./reg');
+module.exports = helpers;
+},{"./array":2,"./general":3,"./object":5,"./reg":6,"./string":7}],5:[function(require,module,exports){
 module.exports = {
 	is: function (possibleObj) {
 		return (!!possibleObj) && (possibleObj.constructor === Object);
@@ -47,7 +53,7 @@ module.exports = {
 		return obj.hasOwnProperty(property);
 	}
 };
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = {
 	execArray: function(string, regexp) {
 		var array,
@@ -68,7 +74,7 @@ module.exports = {
 		}
 	}
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = {
 	is: function(myVar) {
 		return typeof myVar === 'string' || myVar instanceof String;
@@ -88,4 +94,4 @@ module.exports = {
 		return str.replace(/\s/g, separator).toLowerCase();
 	}
 };
-},{}]},{},[3]);
+},{}]},{},[1]);

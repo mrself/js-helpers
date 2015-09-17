@@ -1,11 +1,14 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/**
- * Usage example
- * require('./helpers') return helpers obj
- */
-
-window.h = require('./helpers');
-},{"./helpers":4}],2:[function(require,module,exports){
+window.h = require('./main');
+},{"./main":2}],2:[function(require,module,exports){
+var helpers = {};
+helpers.g = require('./modules/general');
+helpers.obj = require('./modules/object');
+helpers.arr = require('./modules/array');
+helpers.s = require('./modules/string');
+helpers.reg = require('./modules/reg');
+module.exports = helpers;
+},{"./modules/array":3,"./modules/general":4,"./modules/object":5,"./modules/reg":6,"./modules/string":7}],3:[function(require,module,exports){
 module.exports = {
 	is: function (possibleArr) {
 		return (!!possibleArr) && (possibleArr.constructor === Array);
@@ -16,7 +19,7 @@ module.exports = {
 		return array;
 	}
 };
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = {
 	makeClass: function (Class, Prototype) {
 		Class.prototype = new Prototype();
@@ -33,15 +36,7 @@ module.exports = {
 		return new F();
 	}
 };
-},{}],4:[function(require,module,exports){
-var helpers = {};
-helpers.g = require('./general');
-helpers.obj = require('./object');
-helpers.arr = require('./array');
-helpers.s = require('./string');
-helpers.reg = require('./reg');
-module.exports = helpers;
-},{"./array":2,"./general":3,"./object":5,"./reg":6,"./string":7}],5:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = {
 	is: function (possibleObj) {
 		return (!!possibleObj) && (possibleObj.constructor === Object);

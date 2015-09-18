@@ -1,10 +1,12 @@
 QUnit.module('Object');
 QUnit.test('#is', function() {
+	var f = function() {};
 	ok(h.obj.is({}));
+	ok(h.obj.is(new f()));
 	ok(!h.obj.is('a'));
 	ok(!h.obj.is(null));
 	ok(!h.obj.is(1));
-	ok(!h.obj.is(function() {}));
+	ok(!h.obj.is(f));
 });
 QUnit.test('#length', function() {
 	ok(h.obj.length({a:1, b:2}) == 2);
@@ -50,4 +52,29 @@ QUnit.test('#execArray', function() {
 	ok(ar.length == 2);
 	ok(ar[1] == 'superman');
 	ok(ar[0] == 'superman');
+});
+
+
+QUnit.module('String');
+QUnit.test('#is', function() {
+	var is = h.s.is;
+	ok(is(''));
+	ok(!is(1));
+	ok(!is(function(){}));
+	ok(!is({}));
+	ok(!is(null));
+	ok(!is(undefined));
+});
+QUnit.test('#camelize', function() {
+	var fn = h.s.camelize;
+	ok(fn('i-am-batman') == 'iAmBatman', '"-" replace');
+	ok(fn('oh    yeah   ') == 'ohYeah');
+});
+QUnit.test('#capitalize', function() {
+	ok(h.s.capitalize('lowercase') == 'Lowercase');
+});
+QUnit.test('#handlize', function() {
+	ok(h.s.handlize('you and i') == 'you-and-i');
+	ok(h.s.handlize('you and I') == 'you-and-i');
+	ok(h.s.handlize('you and I', '_') == 'you_and_i');
 });

@@ -1,6 +1,6 @@
 module.exports = {
 	is: function (possibleObj) {
-		return (!!possibleObj) && (possibleObj.constructor === Object);
+	    return possibleObj !== null && typeof possibleObj === 'object';
 	},
 	length: function(obj) {
 		return Object.keys(obj).length;

@@ -1,4 +1,5 @@
 module.exports = {
+	/* Deprecated. Use Array.isArray insted */
 	is: function (possibleArr) {
 		return (!!possibleArr) && (possibleArr.constructor === Array);
 	},

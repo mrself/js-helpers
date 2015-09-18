@@ -10,6 +10,7 @@ helpers.reg = require('./modules/reg');
 module.exports = helpers;
 },{"./modules/array":3,"./modules/general":4,"./modules/object":5,"./modules/reg":6,"./modules/string":7}],3:[function(require,module,exports){
 module.exports = {
+	/* Deprecated. Use Array.isArray insted */
 	is: function (possibleArr) {
 		return (!!possibleArr) && (possibleArr.constructor === Array);
 	},
@@ -39,7 +40,7 @@ module.exports = {
 },{}],5:[function(require,module,exports){
 module.exports = {
 	is: function (possibleObj) {
-		return (!!possibleObj) && (possibleObj.constructor === Object);
+	    return possibleObj !== null && typeof possibleObj === 'object';
 	},
 	length: function(obj) {
 		return Object.keys(obj).length;
@@ -78,12 +79,12 @@ module.exports = {
 },{}],7:[function(require,module,exports){
 module.exports = {
 	is: function(myVar) {
-		return typeof myVar === 'string' || myVar instanceof String;
+		return typeof myVar === 'string';
 	},
 	camelize: function(string) {
 		return string.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
 			return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
-		}).replace(/\s+/g, '');
+		}).replace(/[\s|-]+/g, '');
 	},
 	capitalize: function(string) {
 		return string.toLowerCase().replace( /\b\w/g, function (m) {

@@ -14,6 +14,11 @@ QUnit.test('#has', function() {
 	ok(h.obj.has({a:1}, 'a'));
 	ok(!h.obj.has({}, 'a'));
 });
+QUnit.test('#invert', function() {
+	var o = {a:1, b: 2};
+	o = h.obj.invert(o);
+	ok(o[1] == 'a');
+});
 
 QUnit.module('Array');
 QUnit.test('#is', function() {

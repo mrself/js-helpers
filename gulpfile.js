@@ -5,7 +5,10 @@ var gulp = require('gulp'),
 	source = require('vinyl-source-stream'),
 	browserSync = require('browser-sync').create(),
 	requireDir = require('require-dir'),
-	unil = require('gulp-util');
+	util = require('gulp-util'),
+	uglify = require('gulp-uglify'),
+	buffer = require('vinyl-buffer'),
+	rename = require('gulp-rename');
 
 var src = './src/', outputName = 'app.js';
 
@@ -21,6 +24,12 @@ gulp.task('watchify', function() {
 			.bundle()
 			.pipe(source(outputName))
 			.pipe(gulp.dest('./build'))
+			.pipe(buffer())
+			.pipe(uglify().on('error', function(err) {
+				util.log(util.colors.red('Error: ' + err.message));
+			}))
+			.pipe(rename('build.js'))
+			.pipe(gulp.dest('./'))
 			.on('end', function() {
 				bundleLogger.end(outputName);
 				setTimeout(function() {

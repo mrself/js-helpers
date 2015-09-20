@@ -40,37 +40,6 @@ gulp.task('watchify', function() {
 	bundleLogger.watch(outputName);
 	return bundle();
 });
-gulp.task('build', function() {
-	var outputName = 'main.js';
-	var bundler = browserify({
-		cache: {}, packageCache: {}, fullPaths: false,
-		entries: src + outputName
-	});
-	var watcher = watchify(bundler);
-	function bundle() {
-		bundleLogger.start(outputName);
-		return watcher
-			.bundle()
-			.pipe(source(outputName))
-			.pipe(buffer())
-			.pipe(uglify().on('error', function(err) {
-				util.log(util.colors.red('Error: ' + err.message));
-			}))
-			.pipe(rename('build.js'))
-			.pipe(gulp.dest('./'))
-			.on('end', function() {
-				bundleLogger.end(outputName);
-			});
-	}
-	watcher
-		.on('update', bundle)
-		.on('error', function(err) {
-			util.log(util.colors.red('Error: ' + err.message));
-			this.end();
-		});
-	bundleLogger.watch(outputName);
-	return bundle();
-});
 
 
 gulp.task('browser-sync', function() {

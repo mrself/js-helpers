@@ -1,7 +1,7 @@
 {
   "name": "js-helpers",
-  "version": "0.1.4",
-  "main": "./build.js",
+  "version": "0.1.5",
+  "main": "./src/main.js",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.5.3",

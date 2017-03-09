@@ -9,8 +9,8 @@ module.exports = {
 	},
 	capitalize: function(string) {
 		return string.toLowerCase().replace( /\b\w/g, function (m) {
-	        return m.toUpperCase();
-	    });
+			return m.toUpperCase();
+		});
 	},
 	handlize: function(str, separator) {
 		separator = separator || '-';

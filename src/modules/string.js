@@ -9,11 +9,15 @@ module.exports = {
 	},
 	capitalize: function(string) {
 		return string.toLowerCase().replace( /\b\w/g, function (m) {
-	        return m.toUpperCase();
-	    });
+			return m.toUpperCase();
+		});
 	},
 	handlize: function(str, separator) {
 		separator = separator || '-';
 		return str.replace(/\s/g, separator).toLowerCase();
+	},
+
+	capitalizeFirstLetter: function(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 };

@@ -15,5 +15,9 @@ module.exports = {
 	handlize: function(str, separator) {
 		separator = separator || '-';
 		return str.replace(/\s/g, separator).toLowerCase();
+	},
+
+	capitalizeFirstLetter: function(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 };

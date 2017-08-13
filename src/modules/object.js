@@ -14,7 +14,7 @@ module.exports = {
 			obj.hasOwnProperty(prop) && (inverted[obj[prop]] = prop);
 		return inverted;
 	},
-	get: function(obj, key) {
+	get: function(obj, prop) {
 		if(typeof obj === 'undefined') return false;
 		var index = prop.indexOf('.');
 

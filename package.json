@@ -1,8 +1,11 @@
 {
   "name": "js-helpers",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "main": "./src/main.js",
   "license": "MIT",
+  "scripts": {
+    "postversion": "git checkout master && git merge develop && git push && git push --tags && git checkout develop"
+  },
   "devDependencies": {
     "browser-sync": "^2.5.3",
     "browserify": "^11.1.0",

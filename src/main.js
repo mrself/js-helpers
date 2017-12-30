@@ -1,7 +1,7 @@
-var helpers = {};
-helpers.g = require('./modules/general');
-helpers.obj = require('./modules/object');
-helpers.arr = require('./modules/array');
-helpers.s = require('./modules/string');
-helpers.reg = require('./modules/reg');
-module.exports = helpers;
+module.exports = {
+	g: require('./modules/general'),
+	obj: require('./modules/object'),
+	arr: require('./modules/array'),
+	s: require('./modules/string'),
+	reg: require('./modules/reg'),
+};

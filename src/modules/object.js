@@ -1,6 +1,6 @@
 module.exports = {
 	is: function (possibleObj) {
-		return possibleObj !== null && typeof possibleObj === 'object';
+		return possibleObj !== null && typeof possibleObj === 'object' && !Array.isArray(possibleObj);
 	},
 	length: function(obj) {
 		return Object.keys(obj).length;

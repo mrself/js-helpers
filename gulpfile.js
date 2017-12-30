@@ -1,55 +1,22 @@
 var gulp = require('gulp'),
-	browserify = require('browserify'),
-	watchify = require('watchify'),
-	bundleLogger = require('./gulp/bundleLogger'),
-	source = require('vinyl-source-stream'),
-	browserSync = require('browser-sync').create(),
-	requireDir = require('require-dir'),
-	util = require('gulp-util'),
-	uglify = require('gulp-uglify'),
-	buffer = require('vinyl-buffer'),
-	rename = require('gulp-rename');
+	gmocha = require('gulp-mocha'),
+	watch = require('gulp-watch'),
+	notify = require('gulp-notify');
 
-var src = './src/', outputName = 'app.js';
-
-gulp.task('watchify', function() {
-	var bundler = browserify({
-		cache: {}, packageCache: {}, fullPaths: false,
-		entries: src + outputName
-	});
-	var watcher = watchify(bundler);
-	function bundle() {
-		bundleLogger.start(outputName);
-		return watcher
-			.bundle()
-			.pipe(source(outputName))
-			.pipe(gulp.dest('./build'))
-			.on('end', function() {
-				bundleLogger.end(outputName);
-				setTimeout(function() {
-					browserSync.reload();
-				}, 200);
-			});
-	}
-	watcher
-		.on('update', bundle)
-		.on('error', function(err) {
-			util.log(util.colors.red('Error: ' + err.message));
-			this.end();
+gulp.task('test', function () {
+	return gulp.src('test/**/*.js', {read: false})
+		.pipe(gmocha({
+			reporter: 'spec'
+		}))
+		.on('error', function () {
+			notify().write('Tests failed');
 		});
-	bundleLogger.watch(outputName);
-	return bundle();
 });
 
-
-gulp.task('browser-sync', function() {
-	browserSync.init({
-		server: {
-			baseDir: './build'
-		},
-		index: 'index.html',
-		files: ['./build/*.html', './build/test.js']
+gulp.task('watch', function () {
+	watch(['src/**/*.js', 'test/**/*.js'], function () {
+		gulp.start('test');
 	});
 });
 
-gulp.task('default', ['watchify', 'browser-sync']);
+gulp.task('default', ['test', 'watch']);

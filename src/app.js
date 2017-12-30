@@ -1,1 +1,0 @@
-window.h = require('./main');

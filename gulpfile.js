@@ -14,9 +14,10 @@ gulp.task('test', function () {
 });
 
 gulp.task('watch', function () {
+	gulp.start('test');
 	watch(['src/**/*.js', 'test/**/*.js'], function () {
 		gulp.start('test');
 	});
 });
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', ['watch']);

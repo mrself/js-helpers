@@ -4,4 +4,5 @@ module.exports = {
 	arr: require('./modules/array'),
 	s: require('./modules/string'),
 	reg: require('./modules/reg'),
+	fn: require('./modules/function'),
 };
